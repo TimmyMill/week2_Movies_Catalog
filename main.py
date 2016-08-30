@@ -9,7 +9,19 @@ def display_main_menu():
           '2) Edit an Entry\n'
           '3) Add a Movie Record\n'
           '4) Remove a Movie Record\n'
-          '5) EXIT PROGRAM')
+          '5) EXIT PROGRAM\n')
+
+def create_movies_table():
+    conn.sqlite3.connect('movies.db')
+    print('DB is opened')
+    print('Create Table Method')
+    conn.execute(('''CREATE TABLE IF NOT EXISTS MOVIES(ID INT PRIMARY KEY NOT NULL,
+    TITLE CHAR(80) NOT NULL,
+    YEAR INT NOT NULL,
+    RATING REAL NOT NULL,
+    GENRE CHAR(30);'''))
+    conn.close()
+    print('DB is Closed')
 
 def main():
 
